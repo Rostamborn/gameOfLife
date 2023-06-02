@@ -28,18 +28,18 @@ func HandleInput(pointer *Pointer, cells [][]Cell, ToBeAdded []*Cell, gameState 
         _ = keyboard.Close()
     }()
     for {
-		key, _, err := keyboard.GetKey()
+		key, K, err := keyboard.GetKey()
 		if err != nil {
 			panic(err) 
         }
 
-		if key == UP {
+		if key == UP || K == keyboard.KeyArrowUp {
             pointer.Y--
-		} else if key == DOWN {
+		} else if key == DOWN || K == keyboard.KeyArrowDown {
             pointer.Y++
-		} else if key == LEFT {
+		} else if key == LEFT || K == keyboard.KeyArrowLeft {
             pointer.X--
-		} else if key == RIGHT {
+		} else if key == RIGHT || K == keyboard.KeyArrowRight {
             pointer.X++
 		} else if key == 'p' {
            if !cells[pointer.Y][pointer.X].State {

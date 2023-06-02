@@ -54,24 +54,7 @@ func main() {
             cells[j][i] = Cell{X: i, Y: j, State: false}
         }
     }
-    // cells[10][10].State = true
-    // cells[10][11].State = true
-    // cells[9][12].State = true
-    // cells[11][10].State = true
-    // cells[12][10].State = true
-    // cells[11][11].State = true
-    // cells[12][9].State = true
-    // cells[22][14].State = true
-    // cells[12][12].State = true
-    // cells[12][13].State = true
-    // cells[12][14].State = true
-    // cells[12][15].State = true
-    // cells[12][16].State = true
-    // cells[12][17].State = true
-    // cells[12][18].State = true
-    // cells[12][19].State = true
     
-
     ticker := time.NewTicker(200 * time.Millisecond)
     defer ticker.Stop()
 
@@ -92,6 +75,8 @@ func main() {
     for _, v := range ToBeAdded {
         v.State = true
     }
+
+    time.Sleep(500 * time.Millisecond)
 
     newTicker := time.NewTicker(500 * time.Millisecond)
     defer newTicker.Stop()
