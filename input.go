@@ -4,7 +4,7 @@ import(
     "github.com/eiannone/keyboard"
     "log"
 )
-    
+
 func HandleInput() {
     err := keyboard.Open()
     if err != nil {
@@ -13,4 +13,6 @@ func HandleInput() {
     defer func() {
         _ = keyboard.Close()
     }()
+
+
 }

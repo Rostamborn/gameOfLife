@@ -20,18 +20,6 @@ func (c *Cell) BeBorn() {
 	c.State = true
 }
 
-func (c *Cell) CheckState() {
-	if c.State {
-		if len(c.LiveNeighbours) < 2 || 3 < len(c.LiveNeighbours) {
-			c.Die()
-		}
-	} else {
-		if len(c.LiveNeighbours) == 3 {
-			c.BeBorn()
-		}
-	}
-}
-
 func (c *Cell) CheckForNeighbours(cells [][]Cell) {
     c.LiveNeighbours = nil
     
@@ -40,11 +28,11 @@ func (c *Cell) CheckForNeighbours(cells [][]Cell) {
 		{c.X + 1, c.Y - 1}, {c.X + 1, c.Y + 1},
 	}
     for _, p := range points {
-        if p.X < 0 || p.Y < 0 || len(cells) <= p.X || len(cells[0]) <= p.Y {
+        if p.X < 0 || p.Y < 0 || len(cells) <= p.Y || len(cells[0]) <= p.X {
             continue
         }
-        if cells[p.X][p.Y].State {
-            c.LiveNeighbours = append(c.LiveNeighbours, cells[p.X][p.Y])
+        if cells[p.Y][p.X].State {
+            c.LiveNeighbours = append(c.LiveNeighbours, cells[p.Y][p.X])
         }
     }
 }
