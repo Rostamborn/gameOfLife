@@ -33,14 +33,16 @@ func (c *Cell) CheckState() {
 }
 
 func (c *Cell) CheckForNeighbours(cells [][]Cell) {
+    c.LiveNeighbours = nil
+    
 	points := []Point{{c.X, c.Y + 1}, {c.X, c.Y - 1}, {c.X - 1, c.Y},
 		{c.X + 1, c.Y}, {c.X - 1, c.Y - 1}, {c.X - 1, c.Y + 1},
 		{c.X + 1, c.Y - 1}, {c.X + 1, c.Y + 1},
 	}
     for _, p := range points {
-        // if p.X < 0 || p.Y < 0 || len(cells) <= p.X || len(cells[0]) <= p.Y {
-        //     continue
-        // }
+        if p.X < 0 || p.Y < 0 || len(cells) <= p.X || len(cells[0]) <= p.Y {
+            continue
+        }
         if cells[p.X][p.Y].State {
             c.LiveNeighbours = append(c.LiveNeighbours, cells[p.X][p.Y])
         }
