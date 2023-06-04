@@ -1,4 +1,4 @@
-module gameOfLife
+module github.com/rostamborn/gameOfLife
 
 go 1.20
 
