@@ -24,7 +24,10 @@ func HandleInput(pointer *Pointer, cells [][]Cell, ToBeAdded []*Cell, gameState 
 		log.Fatal(err)
 	}
 	defer func() {
-		_ = keyboard.Close()
+        err := keyboard.Close()
+        if err != nil {
+            log.Fatal(err)
+        }
 	}()
 	for {
 		key, K, err := keyboard.GetKey()
